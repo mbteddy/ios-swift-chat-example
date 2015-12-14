@@ -273,10 +273,10 @@
 				5FFF76C2199C191F00AE0269 /* Main.storyboard */,
 				5FFF76C5199C191F00AE0269 /* Images.xcassets */,
 				5FFF76BC199C191F00AE0269 /* Supporting Files */,
-				5FFF76E9199C19EC00AE0269 /* FireChat-Swift-Bridging-Header.h */,
 				5FCB62C0199E7C19008B93DB /* MessagesViewController.swift */,
-				638910FF199E968100B8998F /* LoginViewController.swift */,
 				5FF98CB119A51B8E0041E81A /* Message.swift */,
+				5FFF76E9199C19EC00AE0269 /* FireChat-Swift-Bridging-Header.h */,
+				638910FF199E968100B8998F /* LoginViewController.swift */,
 				5F19222619D9D3D900D5C772 /* TwitterAuthHelper.m */,
 				5F19222819D9DA1500D5C772 /* TwitterAuthHelper.h */,
 			);

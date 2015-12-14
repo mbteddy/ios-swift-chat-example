@@ -11,7 +11,10 @@ import Foundation
 
 class MessagesViewController: JSQMessagesViewController {
     
+//    var user: FAuthData?
     var user: FAuthData?
+    
+    var userID = "David"
     
     var messages = [Message]()
     var avatars = Dictionary<String, UIImage>()
@@ -27,7 +30,7 @@ class MessagesViewController: JSQMessagesViewController {
 
     func setupFirebase() {
         // *** STEP 2: SETUP FIREBASE
-        messagesRef = Firebase(url: "https://swift-chat.firebaseio.com/messages")
+        messagesRef = Firebase(url: "https://swifttest123.firebaseio.com/messages")
 
         // *** STEP 4: RECEIVE MESSAGES FROM FIREBASE (limited to latest 25 messages)
         messagesRef.queryLimitedToNumberOfChildren(25).observeEventType(FEventType.ChildAdded, withBlock: { (snapshot) in
@@ -49,6 +52,8 @@ class MessagesViewController: JSQMessagesViewController {
             "imageUrl":senderImageUrl
         ])
     }
+    
+    
     
     func tempSendMessage(text: String!, sender: String!) {
         let message = Message(text: text, sender: sender, imageUrl: senderImageUrl)
@@ -88,13 +93,18 @@ class MessagesViewController: JSQMessagesViewController {
         avatars[name] = userImage
     }
     
+    @IBOutlet weak var groupName: UINavigationItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        groupName.title = "Group Chat"
+        
         inputToolbar!.contentView!.leftBarButtonItem = nil
         automaticallyScrollsToMostRecentMessage = true
-        navigationController?.navigationBar.topItem?.title = "Logout"
+        navigationController?.navigationBar.topItem?.title = "Back"
         
-        sender = (sender != nil) ? sender : "Anonymous"
+//      sender = (sender != nil) ? sender : "Anonymous"
+        sender = userID
         let profileImageUrl = user?.providerData["cachedUserProfile"]?["profile_image_url_https"] as? NSString
         if let urlString = profileImageUrl {
             setupAvatarImage(sender, imageUrl: urlString as String, incoming: false)
@@ -131,7 +141,7 @@ class MessagesViewController: JSQMessagesViewController {
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, sender: String!, date: NSDate!) {
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
 
-        sendMessage(text, sender: sender)
+        sendMessage(text, sender: userID)
         
         finishSendingMessage()
     }
@@ -147,7 +157,7 @@ class MessagesViewController: JSQMessagesViewController {
     override func collectionView(collectionView: JSQMessagesCollectionView!, bubbleImageViewForItemAtIndexPath indexPath: NSIndexPath!) -> UIImageView! {
         let message = messages[indexPath.item]
         
-        if message.sender() == sender {
+        if message.sender() == userID {
             return UIImageView(image: outgoingBubbleImageView.image, highlightedImage: outgoingBubbleImageView.highlightedImage)
         }
         
@@ -172,13 +182,13 @@ class MessagesViewController: JSQMessagesViewController {
         let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
         
         let message = messages[indexPath.item]
-        if message.sender() == sender {
+        if message.sender() == userID {
             cell.textView!.textColor = UIColor.blackColor()
         } else {
             cell.textView!.textColor = UIColor.whiteColor()
         }
         
-        let attributes : [NSObject:AnyObject] = [NSForegroundColorAttributeName:cell.textView!.textColor, NSUnderlineStyleAttributeName: 1]
+        let attributes : [String:AnyObject] = [NSForegroundColorAttributeName:cell.textView!.textColor!, NSUnderlineStyleAttributeName: 1]
         cell.textView!.linkTextAttributes = attributes
         
         //        cell.textView.linkTextAttributes = [NSForegroundColorAttributeName: cell.textView.textColor,
@@ -192,7 +202,7 @@ class MessagesViewController: JSQMessagesViewController {
         let message = messages[indexPath.item];
         
         // Sent by me, skip
-        if message.sender() == sender {
+        if message.sender() == userID {
             return nil;
         }
         
@@ -211,7 +221,7 @@ class MessagesViewController: JSQMessagesViewController {
         let message = messages[indexPath.item]
         
         // Sent by me, skip
-        if message.sender() == sender {
+        if message.sender() == userID {
             return CGFloat(0.0);
         }
         

@@ -18,8 +18,9 @@ class LoginViewController : UIViewController, UIActionSheetDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Firebase(url:"https://swift-chat.firebaseio.com")
-        authHelper = TwitterAuthHelper(firebaseRef: ref, twitterAppId: "S40X72gZw8JSoDVjWtwidpk2r")
+        ref = Firebase(url:"https://swifttest123.firebaseio.com/")
+        authHelper = TwitterAuthHelper(firebaseRef: ref, twitterAppId: "NPdwc4y8R4HR9143cj8arEukH")
+        print("1\(authHelper)")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -34,6 +35,7 @@ class LoginViewController : UIViewController, UIActionSheetDelegate {
     func authWithTwitter() {
         authHelper.selectTwitterAccountWithCallback { (error, accounts) -> Void in
             self.accounts = accounts as! [ACAccount]
+            print("2\(accounts)")
             self.handleMultipleTwitterAccounts(self.accounts)
         }
     }
@@ -46,6 +48,7 @@ class LoginViewController : UIViewController, UIActionSheetDelegate {
                 // We have an authenticated Twitter user
                 NSLog("%@", authData)
                 // segue to chat
+                print("3\(authData)")
                 self.performSegueWithIdentifier("TWITTER_LOGIN", sender: authData)
             }
         })
@@ -86,6 +89,7 @@ class LoginViewController : UIViewController, UIActionSheetDelegate {
         let messagesVc = segue.destinationViewController as! MessagesViewController
         if let authData = sender as? FAuthData {
             messagesVc.user = authData
+            print("3\(authData)")
             messagesVc.ref = ref
             messagesVc.sender = authData.providerData["username"] as! String
         }
