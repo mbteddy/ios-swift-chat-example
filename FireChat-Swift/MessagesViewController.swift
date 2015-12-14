@@ -97,11 +97,11 @@ class MessagesViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        groupName.title = "Group Chat"
         
         inputToolbar!.contentView!.leftBarButtonItem = nil
         automaticallyScrollsToMostRecentMessage = true
         navigationController?.navigationBar.topItem?.title = "Back"
+        groupName.title = "Group Chat"
         
 //      sender = (sender != nil) ? sender : "Anonymous"
         sender = userID

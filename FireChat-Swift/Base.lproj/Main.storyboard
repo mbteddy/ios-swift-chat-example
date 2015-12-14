@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gmw-sI-4Yj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DLY-ab-E4t">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -26,6 +26,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1815" y="-388"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="hbj-re-9rO">
+            <objects>
+                <viewController id="DLY-ab-E4t" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sNc-pg-L8k"/>
+                        <viewControllerLayoutGuide type="bottom" id="o3Y-tU-cXg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6qh-Ja-aZp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTk-oo-GJA">
+                                <rect key="frame" x="212" y="241" width="176" height="117"/>
+                                <state key="normal" title="Click here"/>
+                                <connections>
+                                    <segue destination="Gmw-sI-4Yj" kind="show" id="Cls-z8-zEd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PTk-oo-GJA" firstAttribute="centerY" secondItem="6qh-Ja-aZp" secondAttribute="centerY" id="bsN-aA-co2"/>
+                            <constraint firstItem="PTk-oo-GJA" firstAttribute="centerX" secondItem="6qh-Ja-aZp" secondAttribute="centerX" id="kfF-mm-Zsk"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I7H-xv-6xs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1374" y="-1096"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="T5r-mG-BR0">
@@ -45,64 +76,5 @@
             </objects>
             <point key="canvasLocation" x="1032" y="-397"/>
         </scene>
-        <!--Login-->
-        <scene sceneID="WAI-50-mdf">
-            <objects>
-                <viewController id="Avq-wd-9Dg" customClass="LoginViewController" customModule="FireChat_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wd7-BT-RyB"/>
-                        <viewControllerLayoutGuide type="bottom" id="bgP-46-PSH"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qQl-qQ-Nk5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yJ-ZT-Jpb">
-                                <rect key="frame" x="100" y="269" width="121" height="30"/>
-                                <state key="normal" title="Login with Twitter">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="login:" destination="Avq-wd-9Dg" eventType="touchUpInside" id="mYD-oS-Xie"/>
-                                    <segue destination="vXZ-lx-hvc" kind="show" id="HpP-NV-BiY"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Login" id="9Ed-Xy-HJT"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <outlet property="btLogin" destination="5yJ-ZT-Jpb" id="Jc9-Yo-Xj6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jkr-q9-rOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1664" y="323"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="0jd-bS-rPQ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gzm-mi-xZd" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lBH-Pf-sZa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Avq-wd-9Dg" kind="relationship" relationship="rootViewController" id="qo4-84-DbA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d3f-0T-Egs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1040" y="285"/>
-        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="HpP-NV-BiY"/>
-    </inferredMetricsTieBreakers>
 </document>
